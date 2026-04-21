@@ -1,29 +1,43 @@
-public class SecondandFirstLargestValue {
-    public static void main(String[] args) {
+public class SecondandFirstLargestValue {    
 
-        int[] arr = {10, 5, 20, 8, 7, 30};
+    public static int SecondLargestvale(int[] arr ) {
         
-        int FirstLarVal = Integer.MIN_VALUE;
-        int SecondLarVal = Integer.MIN_VALUE;
+        if(arr.length<2) {
+            System.out.println("No enough elements are present");
+            return -1;
+        }
+        int largest;
+        int SecondLargest;
+        if (arr[0] > arr[1]) {
 
-        for(int i =0; i<arr.length; i++) {
+            largest = arr[0];
+            SecondLargest= arr[1];
+            
+        } else {
 
-            if(arr[i] > FirstLarVal) {
+            largest = arr[1];
+            SecondLargest = arr[0];
+            
+        }
 
-                SecondLarVal = FirstLarVal;
-                FirstLarVal = arr[i];
-            } else if (arr[i] > SecondLarVal && arr[i] != FirstLarVal) {
-
-                SecondLarVal = arr[i];
+        for(int i =2; i<arr.length; i++) {
+            if (arr[i] > largest) {
+                SecondLargest = largest;
+                largest = arr[i];
+                
+            } else if (arr[i] > SecondLargest && arr[i] != largest) {
+               SecondLargest =  arr[i];
                 
             }
-
-
         }
-        System.out.println("First Largest Value:" + FirstLarVal);
-        System.out.println("Second Largest Value:" + SecondLarVal);
-
-
-
+        return SecondLargest;
     }
+    public static void main(String[] args) {
+        int[] arr = {10, 5, 20, 8, 7, 30};
+
+        int result = SecondLargestvale(arr);
+
+        System.out.println("SecondLargestValue:" + result);
+    }
+    
 }
